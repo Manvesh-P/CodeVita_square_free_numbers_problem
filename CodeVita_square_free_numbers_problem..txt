@@ -1,0 +1,31 @@
+# Square free numbers problem.
+
+list1 = []
+list2 = [4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400]
+list3 = []
+list4 = []
+list5 = []
+
+N = int(input("Enter the nummber: "))
+
+for i in range(2, N+1):             # This loop is to get the total number of factors of the given number.
+    if N % i == 0:
+        list1.append(i)
+        
+#print(list1)
+
+for i in range(0, len(list1)):      # This nested loop is to eliminate the perfect squares.
+    for j in range(0, len(list2)):
+        if list1[i] == list2[j]:
+            list3.append(list1[i])
+            
+list4 =list((set(list1) - set(list3)))
+#print(list4)
+
+for i in range(0, len(list4)):     # This nested loop is to emiminate the factors that are exactly divisible by perfect squares.
+    for j in range(0, len(list2)):
+        if list4[i] % list2[j] == 0:
+            list5.append(list4[i])
+            
+list6 = list(set(list4) - set(list5))
+print(len(list6))
